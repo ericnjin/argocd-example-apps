@@ -29,8 +29,10 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    # - repoURL: {{ .Values.spec.source.repoURL }}
-    #   targetRevision: {{ .Values.spec.source.targetRevision }}
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      path: prometheus
+      ref: myRepo   
     #   path: prometheus
     #   helm:
     #     valueFiles:
@@ -39,10 +41,13 @@ spec:
       chart: prometheus
       targetRevision: 19.7.2
       helm:
-        values: |
-            server:
-              service:
-                type: LoadBalancer
+        valueFiles:
+        -  $myRepo/values.yaml
+      # helm:
+      #   values: |
+      #       server:
+      #         service:
+      #           type: LoadBalancer
   syncPolicy:
     automated:
       prune: true
