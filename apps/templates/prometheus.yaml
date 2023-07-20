@@ -41,7 +41,7 @@ spec:
       targetRevision: 19.7.2
       helm:
         valueFiles:
-        - $myRepo/charts/prometheus/values.yaml
+        - $myRepo/prometheus/values.yaml
       # helm:
       #   values: |
       #       server:
