@@ -33,16 +33,15 @@ spec:
       targetRevision: {{ .Values.spec.source.targetRevision }}
       path: prometheus
       ref: myRepo   
-    #   path: prometheus
-    #   helm:
-    #     valueFiles:
-    #     - values.yaml
+      # helm:
+      #   valueFiles:
+      #   - values.yaml
     - repoURL: https://prometheus-community.github.io/helm-charts/
       chart: prometheus
       targetRevision: 19.7.2
       helm:
         valueFiles:
-        -  $myRepo/prometheus/values.yaml
+        - $myRepo/values.yaml
       # helm:
       #   values: |
       #       server:
